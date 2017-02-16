@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:z="clr-namespace:PrismUnityApp2.ViewModels;assembly=PrismUnityApp2"
+             x:Class="PrismUnityApp2.Views.PopupPage2">
+
+  <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20, 20, 20, 20">
+    <StackLayout BackgroundColor="White">
+      <ListView x:Name="listView" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell TextColor="Black" Text="{Binding FirstName}"></TextCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Behaviors>
+            <z:EventToCommandBehavior EventName="ItemTapped" Command="{Binding CloseCommand}"/>
+        </ListView.Behaviors>
+    </ListView>
+    </StackLayout>
+    <Button Text="Close" TextColor="#A9D1DE" Command="{Binding CloseCommand}" ></Button>
+  </StackLayout>
+
+</pages:PopupPage>
